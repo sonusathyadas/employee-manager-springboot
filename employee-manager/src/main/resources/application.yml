@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: employee-manager
+  profiles:
+    active: dev
+  jpa:
+    open-in-view: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
