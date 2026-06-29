@@ -1,28 +1,11 @@
 {
-  "name": "Java 21 Environment",
-  "image": "://microsoft.com",
+  "name": "Java",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye",
   "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "configureZshAsDefaultShell": true
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21",
+      "installMaven": "true",
+      "installGradle": "false"
     }
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "vscjava.vscode-java-pack",
-        "vscjava.vscode-spring-initializr",
-        "vscjava.vscode-spring-boot-dashboard"
-      ],
-      "settings": {
-        "java.configuration.runtimes": [
-          {
-            "name": "JavaSE-21",
-            "path": "/usr/local/sdkman/candidates/java/current",
-            "default": true
-          }
-        ]
-      }
-    }
-  },
-  "remoteUser": "vscode"
+  }
 }
