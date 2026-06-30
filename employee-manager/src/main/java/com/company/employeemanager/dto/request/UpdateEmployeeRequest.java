@@ -33,5 +33,8 @@ public record UpdateEmployeeRequest(
         BigDecimal salary,
 
         @PastOrPresent(message = "Hire date must be today or in the past")
-        LocalDate hireDate
+        LocalDate hireDate,
+
+        @Size(max = 200, message = "Reporting manager name must not exceed 200 characters")
+        String reportingManager
 ) {}
