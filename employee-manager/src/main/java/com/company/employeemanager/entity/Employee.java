@@ -60,6 +60,10 @@ public class Employee {
     @Column(name = "hire_date", nullable = false)
     private LocalDate hireDate;
 
+    /** Name of the employee's reporting manager. Optional field. */
+    @Column(name = "reporting_manager", length = 200)
+    private String reportingManager;
+
     /** Current employment status. Defaults to {@link EmployeeStatus#ACTIVE}. */
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)

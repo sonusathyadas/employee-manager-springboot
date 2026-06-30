@@ -92,6 +92,12 @@
             <version>${springdoc.version}</version>
         </dependency>
 
+        <!-- Flyway - database migration -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
