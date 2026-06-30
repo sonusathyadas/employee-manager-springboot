@@ -25,6 +25,8 @@ public record EmployeeResponse(
         @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDate hireDate,
 
+        String reportingManager,
+
         EmployeeStatus status,
 
         @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
