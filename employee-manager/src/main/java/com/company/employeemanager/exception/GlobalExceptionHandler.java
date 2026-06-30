@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -43,6 +44,30 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(buildError(HttpStatus.CONFLICT, "Conflict", ex.getMessage(),
                         request.getRequestURI(), null));
+    }
+
+    /**
+     * Handles duplicate username conflicts during user registration.
+     */
+    @ExceptionHandler(DuplicateUsernameException.class)
+    public ResponseEntity<ErrorResponse> handleDuplicateUsername(
+            DuplicateUsernameException ex, HttpServletRequest request) {
+        log.warn("Duplicate username conflict: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(buildError(HttpStatus.CONFLICT, "Conflict", ex.getMessage(),
+                        request.getRequestURI(), null));
+    }
+
+    /**
+     * Handles invalid credentials during login.
+     */
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleBadCredentials(
+            BadCredentialsException ex, HttpServletRequest request) {
+        log.warn("Bad credentials at {}: {}", request.getRequestURI(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(buildError(HttpStatus.UNAUTHORIZED, "Unauthorized",
+                        "Invalid username or password", request.getRequestURI(), null));
     }
 
     /**

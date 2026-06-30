@@ -15,3 +15,7 @@ logging:
   level:
     root: WARN
     com.company.employeemanager: INFO
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}

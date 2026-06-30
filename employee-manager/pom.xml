@@ -19,7 +19,7 @@
     <description>REST API for managing employee profiles</description>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok.version>1.18.30</lombok.version>
         <springdoc.version>2.3.0</springdoc.version>
@@ -96,6 +96,19 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
+        </dependency>
+
+        <!-- JWT -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!-- JAXB API required by jjwt 0.9.1 on Java 11+ (javax.xml.bind.DatatypeConverter) -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
         </dependency>
 
         <!-- Test -->
